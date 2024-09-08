@@ -2,6 +2,7 @@
 ## Architecture Components
 This application implements the following concepts:
 
+  * Compose
   * MVVM
   * Multi-modules
   * Navigation Component
