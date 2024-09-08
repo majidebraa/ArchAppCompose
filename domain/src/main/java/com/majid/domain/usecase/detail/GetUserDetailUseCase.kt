@@ -5,6 +5,8 @@ import androidx.lifecycle.map
 import com.majid.domain.repositories.UserRepository
 import com.majid.model.User
 import com.majid.domain.utils.Resource
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.map
 
 
 /**
@@ -15,7 +17,7 @@ import com.majid.domain.utils.Resource
  */
 class GetUserDetailUseCase(private val repository: UserRepository) {
 
-    suspend operator fun invoke(login: String): LiveData<Resource<User>> {
+    suspend operator fun invoke(login: String): Flow<Resource<User>> {
         return repository.getUserDetailWithCache(login).map {
             it // Place here your specific logic actions (if any)
         }

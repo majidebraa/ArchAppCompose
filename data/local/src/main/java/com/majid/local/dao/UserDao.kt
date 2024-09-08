@@ -13,7 +13,7 @@ abstract class UserDao: BaseDao<User>() {
     abstract  fun getTopUsers(): Flow<List<User>>
 
     @Query("SELECT * FROM User WHERE login = :login LIMIT 1")
-    abstract  fun getUser(login: String): LiveData<User>
+    abstract  fun getUser(login: String): Flow<User>
 
     /**
      * Each time we save an user, we update its 'lastRefreshed' field

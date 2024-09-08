@@ -11,5 +11,5 @@ import org.koin.dsl.module
 val featureDetailModule = module {
     factory { GetUserDetailUseCase(get()) }
     viewModel { (userId: String) -> DetailViewModel(get(), get(), userId,get()) }
-    viewModel { params -> DetailImageViewModel(params.get(),get()) }
+    viewModel { (imageUrl: String) -> DetailImageViewModel(imageUrl,get()) }
 }

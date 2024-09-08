@@ -2,7 +2,9 @@ package com.majid.home
 
 import android.app.Application
 import androidx.lifecycle.viewModelScope
+import com.majid.common.R
 import com.majid.common.base.BaseViewModel
+import com.majid.common.utils.Event
 import com.majid.domain.usecase.home.GetTopUsersUseCase
 import com.majid.model.User
 import com.majid.domain.utils.AppDispatchers
@@ -13,6 +15,10 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.collectLatest
 
+/**
+ * A simple [BaseViewModel] that provide the data and handle logic to communicate with the model
+ * for [HomeScreen].
+ */
 class HomeViewModel(
     private val getTopUsersUseCase: GetTopUsersUseCase,
     private val dispatchers: AppDispatchers,
@@ -30,9 +36,7 @@ class HomeViewModel(
     // PUBLIC ACTIONS ---
     fun userClicksOnItem(user: User) {
         user.login?.let {
-            // navigate(CustomNavDirections.Detail(user.login!!).route)
             navigate(CustomNavDirections.Detail(user.login!!).route)
-            //navigate(CustomNavDirections.Detail)
         }
     }
 
@@ -42,12 +46,13 @@ class HomeViewModel(
 
     private fun getUsers() = viewModelScope.launch(dispatchers.io) {
         _users.emit(Resource.loading())
-        try {
+        //try {
             getTopUsersUseCase().collectLatest {
                 _users.emit(it)
+                if (it.status == Resource.Status.ERROR) snackBarError.value = Event((it as Resource.Error).error)
             }
-        } catch (e: Exception) {
-            _users.emit(Resource.error(e.toString(), null))
-        }
+        //} catch (e: Exception) {
+           // _users.emit(Resource.error(e.toString(), null))
+        //}
     }
 }

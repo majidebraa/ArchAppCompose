@@ -7,6 +7,8 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
+import com.majid.detail.DetailImageScreen
+import com.majid.detail.DetailImageViewModel
 import com.majid.detail.DetailScreen
 import com.majid.detail.DetailViewModel
 import com.majid.home.HomeScreen
@@ -30,8 +32,17 @@ fun AppNavHost(navController: NavHostController= rememberNavController(), startD
             val viewModel: DetailViewModel = koinViewModel(
                 parameters = { parametersOf(userId) }
             )
-            // Extract the argument from the backStackEntry
-            DetailScreen(userId = userId, viewModel = viewModel, navController = navController)
+            DetailScreen(viewModel = viewModel, navController = navController)
+        }
+        composable(
+            route = "detailImage/{imageUrl}",
+            arguments = listOf(navArgument("imageUrl") { type = NavType.StringType })
+        ) { backStackEntry ->
+            val imageUrl = backStackEntry.arguments?.getString("imageUrl")
+            val viewModel: DetailImageViewModel = koinViewModel(
+                parameters = { parametersOf(imageUrl) }
+            )
+            DetailImageScreen(viewModel = viewModel, navController = navController)
         }
     }
 }

@@ -7,7 +7,7 @@ import java.net.ConnectException
 import java.net.SocketTimeoutException
 import java.net.UnknownHostException
 
-class ErrorHandlerImpl(val retrofit: Retrofit) : ErrorHandler {
+class ErrorHandlerImpl(private val retrofit: Retrofit) : ErrorHandler {
     override fun handle(error: Throwable, enable: Boolean): ErrorInfo {
         var info = ErrorInfo(error, ErrorHandler.ErrorType.INTERNAL, null, null)
         error.printStackTrace()

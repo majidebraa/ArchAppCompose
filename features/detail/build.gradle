@@ -53,6 +53,10 @@ dependencies {
     implementation ("io.insert-koin:koin-android:3.5.6")
     implementation ("io.insert-koin:koin-androidx-compose:3.5.6")
     implementation libs.androidx.navigation.runtime.ktx
+    implementation "com.google.accompanist:accompanist-swiperefresh:0.25.1"
+    implementation libs.coil.compose
+    implementation project(':navigation')
+
 
     testImplementation libs.junit
     androidTestImplementation libs.androidx.junit

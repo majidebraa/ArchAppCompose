@@ -1,6 +1,5 @@
 package com.majid.remote.error
 
-import com.majid.remote.error.ErrorHandler
 
 
 data class ErrorInfo(

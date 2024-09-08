@@ -2,7 +2,6 @@ package com.majid.repository
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.liveData
-import androidx.lifecycle.map
 import com.majid.remote.error.ErrorHandler
 import com.majid.domain.repositories.UserRepository
 import com.majid.model.User
@@ -48,7 +47,7 @@ class UserRepositoryImpl(
     override suspend fun getTopUsersWithCache(): Flow<Resource<List<User>>> = flow {
         // Emit the loading state first with cached data
         emit(
-            Resource.loading(userDao.getTopUsers().first())
+            Resource.loading()
         )
 
         try {
@@ -66,7 +65,7 @@ class UserRepositoryImpl(
             // Handle any errors, and emit the error state
             val info = handler.handle(exception, true)
             emit(
-                Resource.error(info.message ?: "Unknown error", userDao.getTopUsers().first())
+                Resource.error(info.message ?: "Unknown error")
             )
         }
     }
@@ -78,35 +77,27 @@ class UserRepositoryImpl(
      * whether in cache (SQLite) or via network (API).
      */
 
-    override suspend fun getUserDetailWithCache(login: String): LiveData<Resource<User>> =
-        liveData {
-            val disposable = emitSource(
-                userDao.getUser(login).map {
-                    Resource.loading(it)
-                }
+    override suspend fun getUserDetailWithCache(login: String): Flow<Resource<User>> =
+        flow {
+            emit(
+                Resource.loading()
             )
 
             try {
                 val user = dataSource.fetchUserDetailsAsync(login)
-                // Stop the previous emission to avoid dispatching the updated user
-                // as `loading`.
-                disposable.dispose()
+
                 // Update the database.
                 userDao.save(user)
                 // Re-establish the emission with success type.
-                emitSource(
-                    userDao.getUser(login).map {
-                        Resource.success(it)
-                    }
+                emit(
+                    Resource.success(userDao.getUser(login).first())
                 )
             } catch (exception: Exception) {
                 // Any call to `emit` disposes the previous one automatically so we don't
                 // need to dispose it here as we didn't get an updated value.
                 val info = handler.handle(exception, true)
-                emitSource(
-                    userDao.getUser(login).map {
-                        Resource.error(info.message!!, it)
-                    }
+                emit(
+                    Resource.error(info.message ?: "Unknown error")
                 )
             }
         }

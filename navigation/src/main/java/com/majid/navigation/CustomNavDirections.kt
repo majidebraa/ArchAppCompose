@@ -17,6 +17,15 @@ sealed class CustomNavDirections(val route: String, val arguments: List<NamedNav
         )
     )
 
+    data class DetailImage(val imageUrl: String) : CustomNavDirections(
+        route = "detailImage/$imageUrl",
+        arguments = listOf(
+            navArgument("imageUrl") {
+                type = NavType.StringType
+            }
+        )
+    )
+
     companion object {
         fun fromRoute(route: String?): CustomNavDirections? {
             return when {
@@ -24,6 +33,10 @@ sealed class CustomNavDirections(val route: String, val arguments: List<NamedNav
                 route?.startsWith("detail/") == true -> {
                     val userId = route.substringAfter("detail/")
                     Detail(userId)
+                }
+                route?.startsWith("detailImage/") == true -> {
+                    val imageUrl = route.substringAfter("detailImage/")
+                    Detail(imageUrl)
                 }
                 else -> null
             }

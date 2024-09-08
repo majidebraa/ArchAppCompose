@@ -22,10 +22,6 @@ class GetTopUsersUseCase(private val userRepository: UserRepository) {
             .map {
                 it
             }
-            /*.catch { exception ->
-                // Handle any errors and emit a Resource.Error
-                emit(Resource.error(exception.localizedMessage, null))
-            }*/
 
     }
 }
