@@ -1,4 +1,4 @@
-package com.majid.model
+package com.majid.common_test
 
 import org.junit.Test
 

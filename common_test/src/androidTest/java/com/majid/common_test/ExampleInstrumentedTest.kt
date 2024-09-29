@@ -1,4 +1,4 @@
-package com.majid.model
+package com.majid.common_test
 
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4
@@ -19,6 +19,6 @@ class ExampleInstrumentedTest {
     fun useAppContext() {
         // Context of the app under test.
         val appContext = InstrumentationRegistry.getInstrumentation().targetContext
-        assertEquals("com.majid.model.test", appContext.packageName)
+        assertEquals("com.majid.common_test.test", appContext.packageName)
     }
 }

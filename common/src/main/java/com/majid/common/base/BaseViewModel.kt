@@ -14,7 +14,7 @@ abstract class BaseViewModel(application: Application) : AndroidViewModel(applic
 
 
     // FOR ERROR HANDLER
-    val snackBarError = MutableLiveData<Event<String>>()
+    val snackBarError = MutableLiveData<Event<Int>>()
 
     fun navigate(directions: String) {
         _navigation.postValue(Event(NavigationCommand.To(directions)))

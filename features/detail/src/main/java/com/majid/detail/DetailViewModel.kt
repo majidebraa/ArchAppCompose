@@ -8,14 +8,14 @@ import com.majid.domain.usecase.detail.GetUserDetailUseCase
 import com.majid.common.utils.Event
 import com.majid.domain.utils.AppDispatchers
 import com.majid.domain.utils.Resource
-import com.majid.model.User
 import com.majid.navigation.CustomNavDirections
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.collectLatest
-import java.net.URLEncoder
-import java.nio.charset.StandardCharsets
+import com.majid.common.R
+import com.majid.model.User
+import kotlinx.coroutines.withContext
 
 
 /**
@@ -46,11 +46,6 @@ class DetailViewModel(
 
     fun userClicksOnAvatarImage(user: User) {
         user.avatarUrl?.let {
-            val encodedUrl = URLEncoder.encode(
-                it,
-                StandardCharsets.UTF_8.toString()
-            )
-            val encodedUrl2 = Uri.encode(it)
             navigate(CustomNavDirections.DetailImage(Uri.encode(it)).route)
         }
 
@@ -60,18 +55,14 @@ class DetailViewModel(
 
     private fun getUserDetail() = viewModelScope.launch(dispatchers.main) {
 
-
         _user.emit(Resource.loading())
-        //try {
         getUserDetailUseCase(login = argsLogin).collectLatest {
             _user.emit(it)
-            if (it.status == Resource.Status.ERROR) snackBarError.value = Event((it as Resource.Error).error)
+            if (it.status == Resource.Status.ERROR)
+                withContext(dispatchers.main) {
+                    snackBarError.value = Event(R.string.an_error_happened)
+                }
         }
-       // withContext(dispatchers.io) { userSource = getUserDetailUseCase(login = argsLogin) }
-        /*_user.addSource(userSource) {
-            _user.value = it.data
-            _isLoading.value = it.status
-            if (it.status == Resource.Status.ERROR) snackBarError.value = Event(R.string.an_error_happened)
-        }*/
+
     }
 }

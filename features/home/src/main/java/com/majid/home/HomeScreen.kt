@@ -48,7 +48,7 @@ fun HomeScreen(viewModel: HomeViewModel, navController: NavHostController) {
                 LazyColumn {
                     items(users) { user ->
                         UserItem(user = user, onClick = {
-                            user.login?.let { login ->
+                            user.login?.let { _ ->
                                 // navController.navigate(CustomNavDirections.Detail(user.login!!).route)
                                 viewModel.userClicksOnItem(user = user)
                             }

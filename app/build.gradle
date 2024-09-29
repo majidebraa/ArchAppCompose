@@ -11,10 +11,6 @@ android {
     defaultConfig {
         applicationId "com.majid.archappcompose"
         multiDexEnabled true
-        /*minSdk 24
-        targetSdk 34
-        versionCode 1
-        versionName "1.0"*/
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables {
@@ -23,9 +19,26 @@ android {
     }
 
     buildTypes {
-        release {
+        debug {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            applicationVariants.all { variant ->
+                variant.outputs.all {
+                    outputFileName = "ArchAppCompose-${defaultConfig.versionName}.apk"
+                }
+            }
+
+        }
+
+        release {
+            minifyEnabled true
+            shrinkResources true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            applicationVariants.all { variant ->
+                variant.outputs.all {
+                    outputFileName = "ArchAppCompose-${defaultConfig.versionName}.apk"
+                }
+            }
         }
     }
     compileOptions {
@@ -57,6 +70,8 @@ dependencies {
     implementation project(':features:home')
     implementation project(':features:detail')
 
+    implementation libs.androidx.multidex
+
     implementation libs.androidx.navigation.compose
 
     implementation libs.androidx.core.ktx
@@ -68,13 +83,12 @@ dependencies {
     implementation libs.androidx.ui.tooling.preview
     implementation libs.androidx.material3
 
-    //implementation libs.koin.core
-    //implementation libs.koin.android
-    //implementation libs.koin.androidx.compose
-    //implementation libs.koin.androidx.viewmodel
     //Koin
-    implementation ("io.insert-koin:koin-android:3.5.6")
-    implementation ("io.insert-koin:koin-androidx-compose:3.5.6")
+    implementation (libs.koin.android)
+    implementation (libs.koin.androidx.compose)
+
+    implementation 'com.google.errorprone:error_prone_annotations:2.26.0'
+
 
 
     testImplementation libs.junit

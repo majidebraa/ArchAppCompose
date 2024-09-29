@@ -1,6 +1,5 @@
 package com.majid.model
 
-
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import com.google.gson.annotations.SerializedName
@@ -19,7 +18,7 @@ data class User (
     var lastRefreshed: Date?
 ): Serializable {
     /**
-     * We consider that a [User] is outdated when the last time
+     * We consider that a [UserEntity] is outdated when the last time
      * we fetched it was more than 10 minutes ago.
      */
     fun haveToRefreshFromNetwork(): Boolean {

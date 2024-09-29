@@ -15,7 +15,7 @@ allprojects {
 }
 
 tasks.register('clean', Delete) {
-    delete rootProject.buildDir
+    delete rootProject.layout.buildDirectory
 }
 
 tasks.register('x', GradleBuild) { tasks = ["detekt", "ktlint", "lintDebug", "testDebugUnitTest"] }

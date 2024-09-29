@@ -1,0 +1,12 @@
+dependencies {
+    // ANDROID TEST
+    androidTestImplementation libs.androidx.runner
+    androidTestImplementation libs.androidx.espresso.core
+    // KOIN
+    androidTestImplementation libs.koin.test
+    // ANDROID
+    androidTestImplementation libs.androidx.core.testing
+    androidTestImplementation libs.androidx.junit
+    // MOCK
+    androidTestImplementation libs.mockk
+}

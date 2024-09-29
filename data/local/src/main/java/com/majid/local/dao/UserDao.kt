@@ -1,6 +1,5 @@
 package com.majid.local.dao
 
-import androidx.lifecycle.LiveData
 import androidx.room.Dao
 import androidx.room.Query
 import com.majid.model.User

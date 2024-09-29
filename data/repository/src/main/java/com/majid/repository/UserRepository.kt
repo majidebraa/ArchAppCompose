@@ -4,10 +4,10 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.liveData
 import com.majid.remote.error.ErrorHandler
 import com.majid.domain.repositories.UserRepository
-import com.majid.model.User
 import com.majid.remote.UserDatasource
 import com.majid.local.dao.UserDao
 import com.majid.domain.utils.Resource
+import com.majid.model.User
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.flow

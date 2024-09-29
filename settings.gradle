@@ -9,6 +9,8 @@ pluginManagement {
         }
         mavenCentral()
         gradlePluginPortal()
+        maven { url 'https://jitpack.io' }
+        jcenter()
     }
 }
 dependencyResolutionManagement {
@@ -17,7 +19,9 @@ dependencyResolutionManagement {
         google()
         mavenCentral()
         maven { url = uri("https://maven.pkg.jetbrains.space/public/p/ktor/eap") }
-
+        maven { url 'https://jitpack.io' }
+        jcenter()
+        gradlePluginPortal()
     }
 }
 
@@ -32,3 +36,4 @@ include ':navigation'
 include ':common'
 include ':features:home'
 include ':features:detail'
+include ':common_test'

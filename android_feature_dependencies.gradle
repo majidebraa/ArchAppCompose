@@ -1,45 +1,69 @@
 /**
  * Feature dependencies
  */
+/*plugins {
+    alias(libs.plugins.android.library)
+    alias(libs.plugins.jetbrains.kotlin.android)
+    id 'kotlin-kapt'
+}*/
 apply plugin: 'com.android.library'
 apply from: '../../android_core_dependencies.gradle'
 apply from: '../../android_commons.gradle'
 apply plugin: 'kotlin-kapt'
-apply plugin: "androidx.navigation.safeargs.kotlin"
 
 dependencies {
-    implementation project(Modules.common)
+    implementation project(':domain')
+    implementation project(':data:model')
+    api project(':common')
+    implementation project(':navigation')
 
-    implementation project(Modules.domain)
-    implementation project(Modules.navigation)
-    // KOIN (Because each feature has to handle its dependencies)
-    implementation Libraries.koin
-    //implementation Libraries.koinViewModel
     // TEST
-    androidTestImplementation TestLibraries.androidTestRunner
-    androidTestImplementation TestLibraries.junit
-    androidTestImplementation project(Modules.commonTest)
-    androidTestImplementation TestLibraries.mockkAndroid
-    androidTestImplementation TestLibraries.fragmentNav
-    androidTestImplementation TestLibraries.espresso
-    androidTestImplementation TestLibraries.espressoContrib
-    androidTestImplementation TestLibraries.koin
-    androidTestImplementation TestLibraries.archCoreTest
-    testImplementation TestLibraries.androidTestRunner
-    testImplementation TestLibraries.junit
-    testImplementation TestLibraries.mockk
-    testImplementation TestLibraries.archCoreTest
-    kaptAndroidTest TestLibraries.databinding
-    testImplementation project(Modules.commonTest)
+    testImplementation libs.junit
+    // ANDROID TEST
+    androidTestImplementation libs.androidx.runner
+    androidTestImplementation libs.androidx.espresso.core
+    // KOIN
+    androidTestImplementation libs.koin.test
+    // ANDROID
+    // androidTestImplementation libs.androidx.core.testing
+    androidTestImplementation libs.androidx.junit
+    // androidTestImplementation libs.espresso.contrib
+    // MOCK
+    androidTestImplementation libs.mockk
+
+    testImplementation libs.androidx.runner
+    testImplementation libs.androidx.espresso.core
+    testImplementation libs.androidx.junit
+    testImplementation libs.mockk.android
+    // testImplementation libs.androidx.core.testing
+    /* androidTestImplementation project(Modules.commonTest)
+    testImplementation project(Modules.commonTest)*/
 }
 
 android {
+
+
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_17
-        targetCompatibility JavaVersion.VERSION_17
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
     }
 
     kotlinOptions {
-        jvmTarget = JavaVersion.VERSION_17.toString()
+        jvmTarget = JavaVersion.VERSION_1_8.toString()
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    buildFeatures {
+        compose true
+    }
+    composeOptions {
+        kotlinCompilerExtensionVersion = '1.5.3'
+    }
+    testOptions {
+        animationsDisabled = true
     }
 }

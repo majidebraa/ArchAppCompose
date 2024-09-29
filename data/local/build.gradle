@@ -22,6 +22,14 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }*/
+    defaultConfig {
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments["room.incremental"] = "true"
+            }
+        }
+    }
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
@@ -34,26 +42,18 @@ android {
 dependencies {
     implementation project(':data:model')
     implementation project(':common')
+    androidTestImplementation project(':common_test')
 
-    implementation libs.androidx.core.ktx
-    implementation libs.androidx.appcompat
-    implementation libs.material
+    //implementation libs.androidx.core.ktx
+    //implementation libs.androidx.appcompat
+    //implementation libs.material
 
     implementation libs.androidx.room.runtime
     kapt libs.androidx.room.compiler
     implementation libs.androidx.room.ktx
 
-    // Hilt dependencies
-    /*implementation libs.hilt.android
-    kapt libs.hilt.compiler
-    kapt libs.androidx.hilt.compiler*/
-    //implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.1'
-    //implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.8.0'
-
-    /*implementation libs.koin.core
-    implementation libs.koin.android*/
-    implementation ("io.insert-koin:koin-android:3.5.6")
-    implementation ("io.insert-koin:koin-androidx-compose:3.5.6")
+    implementation (libs.koin.android)
+    implementation (libs.koin.androidx.compose)
 
     implementation libs.converter.gson
     

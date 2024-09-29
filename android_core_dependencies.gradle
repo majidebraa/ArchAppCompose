@@ -2,16 +2,23 @@
  * Shared dependencies between modules
  */
 dependencies {
-    // KOTLIN
-    implementation KotlinLibraries.kotlin
-    implementation KotlinLibraries.kotlinCoroutineCore
-    implementation AndroidLibraries.kotlinCoroutineAndroid
-    // ANDROID
-    implementation AndroidLibraries.appCompat
-    implementation AndroidLibraries.coreKtx
-    implementation AndroidLibraries.constraintLayout
-    implementation AndroidLibraries.lifecycleViewModel
-    implementation AndroidLibraries.recyclerView
-    implementation AndroidLibraries.navigation
-    implementation AndroidLibraries.navigationFrag
+    implementation libs.androidx.ui
+    implementation libs.androidx.ui.graphics
+    implementation libs.androidx.ui.tooling.preview
+    implementation libs.androidx.material3
+    implementation libs.androidx.core.ktx
+    implementation libs.androidx.appcompat
+    implementation libs.material
+    implementation libs.androidx.paging.runtime.ktx
+    implementation libs.androidx.paging.compose
+    implementation libs.androidx.lifecycle.viewmodel.compose
+    implementation libs.androidx.navigation.compose
+
+    implementation (libs.koin.android)
+    implementation (libs.koin.androidx.compose)
+    implementation libs.coil.compose
+
+    implementation libs.androidx.runtime.livedata
+
+    implementation libs.accompanist.swiperefresh
 }

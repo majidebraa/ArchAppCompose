@@ -43,12 +43,13 @@ fun BaseScreen(
         }
     }
 
+    val context = LocalContext.current
     // Observe snackbar messages
     val snackBarError by viewModel.snackBarError.observeAsState()
     LaunchedEffect(snackBarError) {
         snackBarError?.getContentIfNotHandled()?.let { message ->
             scope.launch {
-                snackbarHostState.showSnackbar(message)
+                snackbarHostState.showSnackbar(context.getString(message))
             }
         }
     }
