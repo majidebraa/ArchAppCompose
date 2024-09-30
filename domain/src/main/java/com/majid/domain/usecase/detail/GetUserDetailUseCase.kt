@@ -1,7 +1,5 @@
 package com.majid.domain.usecase.detail
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.map
 import com.majid.domain.repositories.UserRepository
 import com.majid.domain.utils.Resource
 import com.majid.model.User
@@ -10,7 +8,7 @@ import kotlinx.coroutines.flow.map
 
 
 /**
- * Use case that gets a [Resource] [UserEntity] from [UserRepository]
+ * Use case that gets a [Resource] [User] from [UserRepository]
  * and makes some specific logic actions on it.
  *
  * In this Use Case, I'm just doing nothing... ¯\_(ツ)_/¯

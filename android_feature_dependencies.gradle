@@ -13,7 +13,7 @@ apply plugin: 'kotlin-kapt'
 
 dependencies {
     implementation project(':domain')
-    implementation project(':data:model')
+    //implementation project(':data:model')
     api project(':common')
     implementation project(':navigation')
 
@@ -50,12 +50,6 @@ android {
 
     kotlinOptions {
         jvmTarget = JavaVersion.VERSION_1_8.toString()
-    }
-    buildTypes {
-        release {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
-        }
     }
     buildFeatures {
         compose true

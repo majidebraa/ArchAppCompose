@@ -7,7 +7,7 @@ import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
 import com.majid.local.dao.UserDao
 import com.majid.model.User
-import com.majidebrahimi.local.converter.Converters
+import com.majid.local.converter.Converters
 
 
 @Database(

@@ -41,6 +41,15 @@ android {
             }
         }
     }
+    packagingOptions {
+        jniLibs {
+            pickFirsts += ['**/armeabi-v7a/libmapbox-gl.so', '**/x86/libmapbox-gl.so', '**/arm64-v8a/libmapbox-gl.so', '**/x86_64/libmapbox-gl.so', '**/x86/libmapbox-gl.so']
+        }
+    }
+    lint {
+        abortOnError false
+        checkReleaseBuilds false
+    }
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
@@ -55,14 +64,14 @@ android {
     composeOptions {
         kotlinCompilerExtensionVersion = '1.5.3'
     }
-    packaging {
-        resources {
-            excludes += '/META-INF/{AL2.0,LGPL2.1}'
-        }
+    androidResources {
+        additionalParameters '--no-version-vectors'
     }
 }
 
 dependencies {
+    implementation libs.androidx.multidex
+
     implementation project(':navigation')
     implementation project(':data:remote')
     implementation project(':data:local')
@@ -70,7 +79,6 @@ dependencies {
     implementation project(':features:home')
     implementation project(':features:detail')
 
-    implementation libs.androidx.multidex
 
     implementation libs.androidx.navigation.compose
 

@@ -1,4 +1,4 @@
-package com.majidebrahimi.local.converter
+package com.majid.local.converter
 
 import androidx.room.TypeConverter
 import java.util.*

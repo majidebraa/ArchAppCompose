@@ -22,7 +22,7 @@
 
 -keep class com.majid.model.**{ *; }
 -keep class com.majid.model.User { *; }
--dontwarn com.majid.model.*
+-dontwarn com.majid.model.User
 
 # OkHttp
 -keepattributes Signature

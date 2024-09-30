@@ -18,9 +18,13 @@ data class User (
     var lastRefreshed: Date?
 ): Serializable {
     /**
-     * We consider that a [UserEntity] is outdated when the last time
+     * We consider that a [User] is outdated when the last time
      * we fetched it was more than 10 minutes ago.
      */
+
+    constructor(): this(
+        0,"","","","","",Date()
+    )
     fun haveToRefreshFromNetwork(): Boolean {
         val currentTime = Date().time
         val lastRefreshedTime = lastRefreshed?.time ?: 0
