@@ -41,7 +41,8 @@ dependencies {
     implementation (libs.koin.android)
     implementation (libs.koin.androidx.compose)
 
-    implementation libs.converter.gson
+    implementation libs.gson
+    //implementation libs.converter.gson
     
     testImplementation libs.junit
     androidTestImplementation libs.androidx.junit

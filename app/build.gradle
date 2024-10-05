@@ -10,6 +10,8 @@ android {
 
     defaultConfig {
         applicationId "com.majid.archappcompose"
+        versionCode 1
+        versionName "1.0"
         multiDexEnabled true
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
@@ -45,10 +47,13 @@ android {
         jniLibs {
             pickFirsts += ['**/armeabi-v7a/libmapbox-gl.so', '**/x86/libmapbox-gl.so', '**/arm64-v8a/libmapbox-gl.so', '**/x86_64/libmapbox-gl.so', '**/x86/libmapbox-gl.so']
         }
+        resources {
+            excludes += '/META-INF/{AL2.0,LGPL2.1}'
+        }
     }
     lint {
-        abortOnError false
-        checkReleaseBuilds false
+        abortOnError true
+        checkReleaseBuilds true
     }
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
@@ -62,7 +67,7 @@ android {
         compose true
     }
     composeOptions {
-        kotlinCompilerExtensionVersion = '1.5.3'
+        kotlinCompilerExtensionVersion = '1.5.1'
     }
     androidResources {
         additionalParameters '--no-version-vectors'
@@ -71,11 +76,12 @@ android {
 
 dependencies {
     implementation libs.androidx.multidex
-
+    implementation project(':common')
     implementation project(':navigation')
     implementation project(':data:remote')
     implementation project(':data:local')
     implementation project(':data:repository')
+    implementation project(':domain')
     implementation project(':features:home')
     implementation project(':features:detail')
 

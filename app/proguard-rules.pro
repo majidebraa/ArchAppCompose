@@ -19,9 +19,12 @@
 # If you keep the line number information, uncomment this to
 # hide the original source file name.
 #-renamesourcefileattribute SourceFile
+
+
+-repackageclasses
+
 -keep class com.majid.model.**{ *; }
-# -keep class com.majid.model.User
--dontwarn com.majid.model.*
+
 
 # OkHttp
 -keepattributes Signature
@@ -46,3 +49,21 @@
 -dontwarn org.openjsse.javax.net.ssl.SSLParameters
 -dontwarn org.openjsse.javax.net.ssl.SSLSocket
 -dontwarn org.openjsse.net.ssl.OpenJSSE
+-dontwarn org.conscrypt.ConscryptHostnameVerifier
+
+-keep class com.huxq17.download.** { *; }
+-dontwarn okhttp3.**
+-dontwarn okio.**
+
+ # With R8 full mode generic signatures are stripped for classes that are not
+ # kept. Suspend functions are wrapped in continuations where the type argument
+ # is used.
+ -keep,allowobfuscation,allowshrinking class kotlin.coroutines.Continuation
+
+-dontwarn java.lang.invoke.StringConcatFactory
+# This is also needed for R8 in compat mode since multiple
+# optimizations will remove the generic signature such as class
+# merging and argument removal. See:
+# https://r8.googlesource.com/r8/+/refs/heads/main/compatibility-faq.md#troubleshooting-gson-gson
+# -keep class com.google.gson.reflect.TypeToken { *; }
+# -keep class * extends com.google.gson.reflect.TypeToken

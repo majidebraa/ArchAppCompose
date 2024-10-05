@@ -1,13 +1,14 @@
 [versions]
 accompanistSwiperefresh = "0.25.1"
-agp = "8.4.2"
+agp = "8.5.2"
 coilCompose = "2.2.2"
 converterGson = "2.11.0"
 coreTesting = "2.1.0"
+gson = "2.10.1"
 koinAndroid = "3.5.6"
 koinAndroidxCompose = "3.5.6"
 koinTest = "3.5.6"
-kotlin = "1.9.10"
+kotlin = "1.9.0"
 coreKtx = "1.13.1"
 junit = "4.13.2"
 junitVersion = "1.2.1"
@@ -51,6 +52,7 @@ androidx-runtime-livedata = { module = "androidx.compose.runtime:runtime-livedat
 coil-compose = { module = "io.coil-kt:coil-compose", version.ref = "coilCompose" }
 converter-gson = { module = "com.squareup.retrofit2:converter-gson", version.ref = "converterGson" }
 espresso-contrib = { module = "androidx.test.espresso:espresso-contrib", version.ref = "espressoCore" }
+gson = { module = "com.google.code.gson:gson", version.ref = "gson" }
 junit = { group = "junit", name = "junit", version.ref = "junit" }
 androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }
 androidx-espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espressoCore" }

@@ -18,7 +18,7 @@ android {
 
 dependencies {
     implementation  libs.kotlin.stdlib.jdk7
-    implementation libs.converter.gson
+    implementation libs.gson
     implementation libs.androidx.room.runtime
-    implementation libs.androidx.core.ktx
+    //implementation libs.androidx.core.ktx
 }

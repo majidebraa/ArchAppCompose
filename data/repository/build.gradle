@@ -19,20 +19,12 @@ android {
 
 dependencies {
 
-    // implementation project(':data:model')
     implementation project(':data:remote')
     implementation project(':data:local')
     implementation project(':domain')
-
-    implementation libs.androidx.core.ktx
-    implementation libs.androidx.appcompat
-    implementation libs.material
-
-    /*implementation libs.koin.core
-    implementation libs.koin.android*/
     implementation (libs.koin.android)
     implementation (libs.koin.androidx.compose)
-    //implementation project(':data:model')
+
 
 
     testImplementation libs.junit
