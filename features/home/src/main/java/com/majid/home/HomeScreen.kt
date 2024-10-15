@@ -31,12 +31,7 @@ import com.majid.model.User
 @Composable
 fun HomeScreen(viewModel: HomeViewModel, navController: NavHostController) {
     BaseScreen(viewModel = viewModel, navController = navController){
-        // Your StartScreen content here
-        /*Button(onClick = {
-           viewModel.navigate(CustomNavDirections.Detail)
-        }) {
-            Text("Go to Details")
-        }*/
+        // StartScreen content here
         val usersResource by viewModel.users.collectAsState()
 
         when (usersResource) {
@@ -76,14 +71,6 @@ fun UserItem(user: User, onClick: () -> Unit) {
         verticalAlignment = Alignment.CenterVertically
     ) {
         // Assuming you have a way to load the image from a URL
-        /*AsyncImage(
-            model = user.avatarUrl,
-            contentDescription = null,
-            modifier = Modifier
-                .size(40.dp)
-                .padding(end = 16.dp),
-            contentScale = ContentScale.Crop
-        )*/
         Image(
             painter = rememberAsyncImagePainter(model = user.avatarUrl),
             contentDescription = null,

@@ -101,7 +101,7 @@ dependencies {
     implementation (libs.koin.android)
     implementation (libs.koin.androidx.compose)
 
-    implementation 'com.google.errorprone:error_prone_annotations:2.26.0'
+    implementation libs.error.prone.annotations
 
 
 

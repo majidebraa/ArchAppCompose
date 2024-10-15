@@ -21,7 +21,6 @@
 #-renamesourcefileattribute SourceFile
 
 -keep class com.majid.model.**{ *; }
-# -dontwarn com.majid.model.**
 
 
 

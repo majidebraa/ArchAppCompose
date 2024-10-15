@@ -4,6 +4,7 @@ agp = "8.5.2"
 coilCompose = "2.2.2"
 converterGson = "2.11.0"
 coreTesting = "2.1.0"
+error_prone_annotations = "2.26.0"
 gson = "2.10.1"
 koinAndroid = "3.5.6"
 koinAndroidxCompose = "3.5.6"
@@ -16,6 +17,7 @@ espressoCore = "3.5.1"
 espressoCoreContrib = "3.5.1"
 kotlinStdlibJdk7 = "1.9.0"
 kotlinxCoroutinesTest = "1.7.3"
+ktlint = "0.31.0"
 lifecycleRuntimeKtx = "2.8.2"
 activityCompose = "1.9.0"
 composeBom = "2024.06.00"
@@ -51,6 +53,7 @@ androidx-runtime = { module = "androidx.compose.runtime:runtime", version.ref = 
 androidx-runtime-livedata = { module = "androidx.compose.runtime:runtime-livedata", version.ref = "runtimeLivedata" }
 coil-compose = { module = "io.coil-kt:coil-compose", version.ref = "coilCompose" }
 converter-gson = { module = "com.squareup.retrofit2:converter-gson", version.ref = "converterGson" }
+error_prone_annotations = { module = "com.google.errorprone:error_prone_annotations", version.ref = "error_prone_annotations" }
 espresso-contrib = { module = "androidx.test.espresso:espresso-contrib", version.ref = "espressoCore" }
 gson = { module = "com.google.code.gson:gson", version.ref = "gson" }
 junit = { group = "junit", name = "junit", version.ref = "junit" }
@@ -72,6 +75,7 @@ koin-androidx-compose = { module = "io.insert-koin:koin-androidx-compose", versi
 koin-test = { module = "io.insert-koin:koin-test", version.ref = "koinTest" }
 kotlin-stdlib-jdk7 = { module = "org.jetbrains.kotlin:kotlin-stdlib-jdk7", version.ref = "kotlinStdlibJdk7" }
 kotlinx-coroutines-test = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-test", version.ref = "kotlinxCoroutinesTest" }
+ktlint = { module = "com.github.shyiko:ktlint", version.ref = "ktlint" }
 logging-interceptor = { module = "com.squareup.okhttp3:logging-interceptor", version.ref = "loggingInterceptor" }
 material = { group = "com.google.android.material", name = "material", version.ref = "material" }
 androidx-navigation-common-ktx = { group = "androidx.navigation", name = "navigation-common-ktx", version.ref = "navigationCommonKtx" }

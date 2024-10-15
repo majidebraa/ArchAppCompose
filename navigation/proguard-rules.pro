@@ -22,4 +22,3 @@
 -keepattributes Signature
 -keepattributes *Annotation*
 -keep class com.majid.model.**{ *; }
--dontwarn com.majid.model.*

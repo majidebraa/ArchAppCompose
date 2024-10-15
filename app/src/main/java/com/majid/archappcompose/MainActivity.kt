@@ -13,10 +13,8 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             ArchAppComposeTheme {
-                //Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    val navController = rememberNavController()
+                val navController = rememberNavController()
                 AppNavHost(navController = navController)
-                //}
             }
         }
     }
